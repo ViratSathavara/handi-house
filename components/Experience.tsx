@@ -11,6 +11,7 @@ import Marquee from "./Marquee";
 import Signature from "./Signature";
 import Story from "./Story";
 import Reveal from "./Reveal";
+import Anatomy from "./Anatomy";
 import Method from "./Method";
 import Spices from "./Spices";
 import Menu from "./Menu";
@@ -64,6 +65,7 @@ export default function Experience() {
         <Signature />
         <Story />
         <Reveal />
+        <Anatomy />
         <Method />
         <Spices />
         <Menu />
