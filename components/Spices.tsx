@@ -66,7 +66,7 @@ export default function Spices() {
           </span>
         </h2>
         <div className="sp-art">
-          <DishArt vessel="spices" palette={["#e9b44c", "#7a3a16", "#c4472b", "#7aa65a", "#2a1a10", "#f1dfae"]} seed={5} particles={0} />
+          <DishArt image="/dishes/spices.webp" vessel="spices" palette={["#e9b44c", "#7a3a16", "#c4472b", "#7aa65a", "#2a1a10", "#f1dfae"]} seed={5} particles={0} />
         </div>
       </div>
       <ul className="sp-list">

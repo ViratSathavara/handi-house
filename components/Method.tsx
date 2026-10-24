@@ -81,7 +81,7 @@ export default function Method() {
           <article className="mt-panel" key={s.n}>
             <span className="mt-ghost">{s.n}</span>
             <div className="mt-art">
-              <DishArt vessel={s.vessel} food={s.food} seed={i + 21} particles={10} />
+              <DishArt image={s.image} vessel={s.vessel} food={s.food} seed={i + 21} particles={10} />
             </div>
             <div className="mt-text">
               <span className="mt-n">{s.n}</span>

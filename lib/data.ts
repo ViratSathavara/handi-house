@@ -1,9 +1,8 @@
 // ─────────────────────────────────────────────────────────────
 //  ALL CONTENT LIVES HERE. Swap names, copy, prices, images.
-//  To use your own food photos: drop transparent PNG cut-outs in
-//  /public/dishes and set `image` (and optional `burst`) below.
-//  Without images, the site draws a built-in placeholder plate
-//  with particles that burst on scroll.
+//  Dish photos are real, round-cropped photos in /public/dishes
+//  (credits in /CREDITS.md). Replace them with your own food photos
+//  at any time; without `image` the site draws a built-in placeholder.
 // ─────────────────────────────────────────────────────────────
 export type Vessel = "handi" | "kadai" | "plate" | "glass" | "bread" | "spices";
 
@@ -27,6 +26,7 @@ export const BRAND = "Handi House";
 export const dishes: Dish[] = [
   {
     slug: "biryani",
+    image: "/dishes/biryani.webp",
     word: "Biryani",
     titleA: "Chicken Dum",
     titleB: "Biryani",
@@ -39,6 +39,7 @@ export const dishes: Dish[] = [
   },
   {
     slug: "makhani",
+    image: "/dishes/makhani.webp",
     word: "Makhani",
     titleA: "Butter",
     titleB: "Chicken",
@@ -51,6 +52,7 @@ export const dishes: Dish[] = [
   },
   {
     slug: "tandoori",
+    image: "/dishes/tandoori.webp",
     word: "Tandoori",
     titleA: "Tandoori",
     titleB: "Chicken",
@@ -63,6 +65,7 @@ export const dishes: Dish[] = [
   },
   {
     slug: "seekh",
+    image: "/dishes/seekh.webp",
     word: "Seekh",
     titleA: "Lamb Seekh",
     titleB: "Kebab",
@@ -75,6 +78,7 @@ export const dishes: Dish[] = [
   },
   {
     slug: "tikka",
+    image: "/dishes/tikka.webp",
     word: "Tikka",
     titleA: "Paneer",
     titleB: "Tikka",
@@ -87,6 +91,7 @@ export const dishes: Dish[] = [
   },
   {
     slug: "dal",
+    image: "/dishes/dal.webp",
     word: "Dal",
     titleA: "Dal",
     titleB: "Makhani",
@@ -99,6 +104,7 @@ export const dishes: Dish[] = [
   },
   {
     slug: "naan",
+    image: "/dishes/naan.webp",
     word: "Naan",
     titleA: "Garlic Butter",
     titleB: "Naan",
@@ -111,6 +117,7 @@ export const dishes: Dish[] = [
   },
   {
     slug: "lassi",
+    image: "/dishes/lassi.webp",
     word: "Lassi",
     titleA: "Mango",
     titleB: "Lassi",
@@ -149,11 +156,11 @@ export const menu = [
 ];
 
 export const steps = [
-  { n: "01", name: "Marinate", text: "Overnight in yoghurt, red chilli and ginger-garlic. The meat has to be tender before the fire ever touches it.", vessel: "plate" as Vessel, food: "#b5441f" },
-  { n: "02", name: "Parboil", text: "Basmati is washed until the water runs clear, then cooked to exactly seventy percent with whole spices.", vessel: "kadai" as Vessel, food: "#efe2b8" },
-  { n: "03", name: "Layer", text: "Meat, rice, fried onions, mint, saffron milk, ghee. Repeat. Every layer is placed by hand.", vessel: "handi" as Vessel, food: "#f1dfae" },
-  { n: "04", name: "Seal", text: "A rope of dough is pressed around the rim. Nothing escapes: not steam, not aroma, not shortcuts.", vessel: "handi" as Vessel, food: "#e9c98a" },
-  { n: "05", name: "Lift", text: "Ninety minutes on the lowest flame, then the seal is cracked at your table. That is the moment.", vessel: "handi" as Vessel, food: "#f1dfae" },
+  { n: "01", name: "Marinate", text: "Overnight in yoghurt, red chilli and ginger-garlic. The meat has to be tender before the fire ever touches it.", vessel: "plate" as Vessel, food: "#b5441f", image: "/dishes/step1.webp" },
+  { n: "02", name: "Parboil", text: "Basmati is washed until the water runs clear, then cooked to exactly seventy percent with whole spices.", vessel: "kadai" as Vessel, food: "#efe2b8", image: "/dishes/step2.webp" },
+  { n: "03", name: "Layer", text: "Meat, rice, fried onions, mint, saffron milk, ghee. Repeat. Every layer is placed by hand.", vessel: "handi" as Vessel, food: "#f1dfae", image: "/dishes/step3.webp" },
+  { n: "04", name: "Seal", text: "A rope of dough is pressed around the rim. Nothing escapes: not steam, not aroma, not shortcuts.", vessel: "handi" as Vessel, food: "#e9c98a", image: "/dishes/step4.webp" },
+  { n: "05", name: "Lift", text: "Ninety minutes on the lowest flame, then the seal is cracked at your table. That is the moment.", vessel: "handi" as Vessel, food: "#f1dfae", image: "/dishes/step5.webp" },
 ];
 
 export const marquee = [

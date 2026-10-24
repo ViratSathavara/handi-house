@@ -16,6 +16,7 @@ function rng(seed: number) {
 interface Props {
   dish?: Dish;
   vessel?: Vessel;
+  image?: string;
   food?: string;
   palette?: string[];
   seed?: number;
@@ -27,7 +28,7 @@ interface Props {
  * Renders a dish. If dish.image exists → real PNG cut-out (+ optional burst frame).
  * Otherwise → an SVG placeholder with particles (.p) that GSAP bursts on scroll.
  */
-export default function DishArt({ dish, vessel, food, palette, seed = 1, particles = 22, className = "" }: Props) {
+export default function DishArt({ dish, vessel, image, food, palette, seed = 1, particles = 22, className = "" }: Props) {
   const uid = useId().replace(/[^a-zA-Z0-9]/g, "");
   const v = dish?.vessel ?? vessel ?? "plate";
   const f = dish?.food ?? food ?? "#d9622b";
@@ -52,14 +53,15 @@ export default function DishArt({ dish, vessel, food, palette, seed = 1, particl
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [seed, particles, pal.join()]);
 
-  const real = !!dish?.image;
+  const src = dish?.image ?? image;
+  const real = !!src;
 
   return (
     <div className={`art ${className}`} data-vessel={v}>
       {real ? (
         <>
-          <img className="art-img" src={dish!.image} alt={dish!.titleA + " " + dish!.titleB} draggable={false} />
-          {dish!.burst && <img className="art-burst" src={dish!.burst} alt="" draggable={false} />}
+          <img className="art-img" src={src} alt={dish ? dish.titleA + " " + dish.titleB : ""} draggable={false} />
+          {dish?.burst && <img className="art-burst" src={dish.burst} alt="" draggable={false} />}
         </>
       ) : (
         <>
