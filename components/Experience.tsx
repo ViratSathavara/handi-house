@@ -8,6 +8,7 @@ import Cursor from "./Cursor";
 import Nav from "./Nav";
 import Hero from "./Hero";
 import Marquee from "./Marquee";
+import Signature from "./Signature";
 import Story from "./Story";
 import Reveal from "./Reveal";
 import Method from "./Method";
@@ -60,6 +61,7 @@ export default function Experience() {
       <main>
         <Hero go={go} />
         <Marquee />
+        <Signature />
         <Story />
         <Reveal />
         <Method />

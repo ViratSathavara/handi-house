@@ -1,0 +1,4 @@
+/* base only emits the --tw-* variable defaults here: preflight is disabled in tailwind.config.ts */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

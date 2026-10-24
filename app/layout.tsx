@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "./tailwind.css";
 
 export const metadata: Metadata = {
   title: "Handi House — Slow-cooked, sealed, served at the table",
