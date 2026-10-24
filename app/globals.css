@@ -94,8 +94,8 @@ html.lenis, html.lenis body { height: auto; }
 /* ── art (dish renderer) ─────────────────────────── */
 .art { position: relative; width: 100%; height: 100%; display: grid; place-items: center; }
 .art-svg, .art-img, .art-burst { width: 100%; height: 100%; object-fit: contain; overflow: visible; }
-.art-img, .art-burst { filter: drop-shadow(0 30px 40px rgba(0, 0, 0, 0.6)); border-radius: 50%; }
-.art-img { aspect-ratio: 1; }
+.art-img, .art-burst { will-change: transform, opacity; }
+.art-particles .p-img { height: auto; background: none; border-radius: 0; filter: drop-shadow(0 10px 14px rgba(0, 0, 0, 0.55)); }
 .art-burst { position: absolute; inset: 0; opacity: 0; }
 .art-particles { position: absolute; inset: 0; pointer-events: none; }
 .art-particles .p { position: absolute; left: 50%; top: 42%; opacity: 0; will-change: transform; }

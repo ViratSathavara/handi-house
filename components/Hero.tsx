@@ -62,7 +62,16 @@ export default function Hero({ go }: { go: boolean }) {
         burst(tl, d, i + 0.12, 0.5);
         tl.to(art, { scale: 1.08, duration: 0.7, ease: "power1.out" }, i + 0.1);
         const bimg = d.querySelector(".art-burst");
-        if (bimg) tl.fromTo(bimg, { opacity: 0 }, { opacity: 1, duration: 0.35 }, i + 0.2);
+        const cimg = d.querySelector(".art-img");
+        if (bimg) {
+          tl.fromTo(bimg, { opacity: 0, scale: 0.9, yPercent: 3 }, { opacity: 1, scale: 1, yPercent: 0, duration: 0.35, ease: "power2.out" }, i + 0.2);
+          if (cimg) tl.to(cimg, { opacity: 0, scale: 1.04, duration: 0.3 }, i + 0.22);
+        }
+        // ingredients fade away again as the next dish arrives
+        d.querySelectorAll(".p").forEach((p) => tl.to(p, { opacity: 0, scale: 0.6, duration: 0.2 }, i + 0.66));
+        // idle breathing so the dish never feels frozen
+        if (cimg) gsap.to(cimg, { y: -10, duration: 2.4, yoyo: true, repeat: -1, ease: "sine.inOut" });
+        if (bimg) gsap.to(bimg, { y: -8, duration: 2.8, yoyo: true, repeat: -1, ease: "sine.inOut" });
 
         if (i < N - 1) {
           const t0 = i + 0.68;

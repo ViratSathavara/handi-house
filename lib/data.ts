@@ -17,8 +17,9 @@ export interface Dish {
   vessel: Vessel;
   food: string; // main food colour of the placeholder
   palette: string[]; // particle colours
-  image?: string; // e.g. "/dishes/biryani.png"
-  burst?: string; // optional second frame, e.g. "/dishes/biryani-burst.png"
+  image?: string; // closed / served frame (transparent)
+  burst?: string; // exploded frame with flying ingredients (transparent)
+  sprites?: string[]; // real ingredient cut-outs that fly out on scroll
 }
 
 export const BRAND = "Handi House";
@@ -27,6 +28,8 @@ export const dishes: Dish[] = [
   {
     slug: "biryani",
     image: "/dishes/biryani.webp",
+    burst: "/dishes/biryani-burst.webp",
+    sprites: ["mint_1", "mint_2", "chili_1", "chili_3", "rice", "rice"],
     word: "Biryani",
     titleA: "Chicken Dum",
     titleB: "Biryani",
@@ -40,6 +43,8 @@ export const dishes: Dish[] = [
   {
     slug: "makhani",
     image: "/dishes/makhani.webp",
+    burst: "/dishes/makhani-burst.webp",
+    sprites: ["chili_2", "mint_0", "mint_4", "d_cream", "d_orange", "chili_4"],
     word: "Makhani",
     titleA: "Butter",
     titleB: "Chicken",
@@ -53,6 +58,8 @@ export const dishes: Dish[] = [
   {
     slug: "tandoori",
     image: "/dishes/tandoori.webp",
+    burst: "/dishes/tandoori-burst.webp",
+    sprites: ["chili_3", "mint_2", "chili_1", "d_orange", "mint_4", "chili_2"],
     word: "Tandoori",
     titleA: "Tandoori",
     titleB: "Chicken",
@@ -66,6 +73,8 @@ export const dishes: Dish[] = [
   {
     slug: "seekh",
     image: "/dishes/seekh.webp",
+    burst: "/dishes/seekh-burst.webp",
+    sprites: ["chili_4", "mint_3", "chili_0", "mint_1", "d_gold", "chili_2"],
     word: "Seekh",
     titleA: "Lamb Seekh",
     titleB: "Kebab",
@@ -79,6 +88,8 @@ export const dishes: Dish[] = [
   {
     slug: "tikka",
     image: "/dishes/tikka.webp",
+    burst: "/dishes/tikka-burst.webp",
+    sprites: ["chili_1", "mint_2", "chili_3", "mint_4", "d_orange", "d_gold"],
     word: "Tikka",
     titleA: "Paneer",
     titleB: "Tikka",
@@ -92,6 +103,8 @@ export const dishes: Dish[] = [
   {
     slug: "dal",
     image: "/dishes/dal.webp",
+    burst: "/dishes/dal-burst.webp",
+    sprites: ["chili_2", "mint_1", "d_cream", "chili_4", "mint_5", "d_gold"],
     word: "Dal",
     titleA: "Dal",
     titleB: "Makhani",
@@ -105,6 +118,8 @@ export const dishes: Dish[] = [
   {
     slug: "naan",
     image: "/dishes/naan.webp",
+    burst: "/dishes/naan-burst.webp",
+    sprites: ["mint_3", "mint_5", "d_gold", "mint_2", "mint_0", "d_cream"],
     word: "Naan",
     titleA: "Garlic Butter",
     titleB: "Naan",
@@ -118,6 +133,8 @@ export const dishes: Dish[] = [
   {
     slug: "lassi",
     image: "/dishes/lassi.webp",
+    burst: "/dishes/lassi-burst.webp",
+    sprites: ["d_gold", "mint_1", "d_cream", "mint_4", "d_orange", "d_gold"],
     word: "Lassi",
     titleA: "Mango",
     titleB: "Lassi",
@@ -156,11 +173,11 @@ export const menu = [
 ];
 
 export const steps = [
-  { n: "01", name: "Marinate", text: "Overnight in yoghurt, red chilli and ginger-garlic. The meat has to be tender before the fire ever touches it.", vessel: "plate" as Vessel, food: "#b5441f", image: "/dishes/step1.webp" },
-  { n: "02", name: "Parboil", text: "Basmati is washed until the water runs clear, then cooked to exactly seventy percent with whole spices.", vessel: "kadai" as Vessel, food: "#efe2b8", image: "/dishes/step2.webp" },
-  { n: "03", name: "Layer", text: "Meat, rice, fried onions, mint, saffron milk, ghee. Repeat. Every layer is placed by hand.", vessel: "handi" as Vessel, food: "#f1dfae", image: "/dishes/step3.webp" },
-  { n: "04", name: "Seal", text: "A rope of dough is pressed around the rim. Nothing escapes: not steam, not aroma, not shortcuts.", vessel: "handi" as Vessel, food: "#e9c98a", image: "/dishes/step4.webp" },
-  { n: "05", name: "Lift", text: "Ninety minutes on the lowest flame, then the seal is cracked at your table. That is the moment.", vessel: "handi" as Vessel, food: "#f1dfae", image: "/dishes/step5.webp" },
+  { n: "01", name: "Marinate", text: "Overnight in yoghurt, red chilli and ginger-garlic. The meat has to be tender before the fire ever touches it.", vessel: "plate" as Vessel, food: "#b5441f", image: "/dishes/tikka.webp" },
+  { n: "02", name: "Parboil", text: "Basmati is washed until the water runs clear, then cooked to exactly seventy percent with whole spices.", vessel: "kadai" as Vessel, food: "#efe2b8", image: "/dishes/biryani.webp" },
+  { n: "03", name: "Layer", text: "Meat, rice, fried onions, mint, saffron milk, ghee. Repeat. Every layer is placed by hand.", vessel: "handi" as Vessel, food: "#f1dfae", image: "/dishes/biryani-burst.webp" },
+  { n: "04", name: "Seal", text: "A rope of dough is pressed around the rim. Nothing escapes: not steam, not aroma, not shortcuts.", vessel: "handi" as Vessel, food: "#e9c98a", image: "/dishes/dal.webp" },
+  { n: "05", name: "Lift", text: "Ninety minutes on the lowest flame, then the seal is cracked at your table. That is the moment.", vessel: "handi" as Vessel, food: "#f1dfae", image: "/dishes/makhani-burst.webp" },
 ];
 
 export const marquee = [

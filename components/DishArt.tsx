@@ -34,24 +34,27 @@ export default function DishArt({ dish, vessel, image, food, palette, seed = 1, 
   const f = dish?.food ?? food ?? "#d9622b";
   const pal = dish?.palette ?? palette ?? ["#f4d9a0", "#e8742e", "#7aa65a", "#fff1d6"];
 
+  const sprites = dish?.sprites;
   const parts = useMemo(() => {
     const r = rng(seed * 97 + 13);
     const out = [];
-    for (let i = 0; i < particles; i++) {
+    const count = particles > 0 && sprites?.length ? sprites.length + 2 : particles;
+    for (let i = 0; i < count; i++) {
       const ang = r() * Math.PI * 2;
       const dist = 150 + r() * 230;
       out.push({
         vx: Math.round(Math.cos(ang) * dist * 1.15),
         vy: Math.round(Math.sin(ang) * dist * 0.85 - 40),
         rot: Math.round((r() - 0.5) * 540),
-        size: Math.round(8 + r() * 20),
+        size: sprites?.length ? Math.round(18 + r() * 26) : Math.round(8 + r() * 20),
+        sprite: sprites?.length ? sprites[i % sprites.length] : undefined,
         color: pal[Math.floor(r() * pal.length)],
         leaf: r() > 0.5,
       });
     }
     return out;
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [seed, particles, pal.join()]);
+  }, [seed, particles, pal.join(), sprites?.join()]);
 
   const src = dish?.image ?? image;
   const real = !!src;
@@ -178,25 +181,40 @@ export default function DishArt({ dish, vessel, image, food, palette, seed = 1, 
               <path d="M360 250 C330 205 390 175 360 120" />
             </g>
           </svg>
-          <div className="art-particles">
-            {parts.map((p, i) => (
-              <span
-                key={i}
-                className="p"
-                data-vx={p.vx}
-                data-vy={p.vy}
-                data-r={p.rot}
-                style={{
-                  width: p.size,
-                  height: p.leaf ? p.size * 0.6 : p.size,
-                  background: p.color,
-                  borderRadius: p.leaf ? "60% 0 60% 0" : "50%",
-                }}
-              />
-            ))}
-          </div>
         </>
       )}
+      <div className="art-particles">
+        {parts.map((p, i) =>
+          p.sprite ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              key={i}
+              className="p p-img"
+              src={`/sprites/${p.sprite}.webp`}
+              alt=""
+              draggable={false}
+              data-vx={p.vx}
+              data-vy={p.vy}
+              data-r={p.rot * 2}
+              style={{ width: p.size * (p.sprite === "rice" ? 1.1 : 1.3) }}
+            />
+          ) : (
+            <span
+              key={i}
+              className="p"
+              data-vx={p.vx}
+              data-vy={p.vy}
+              data-r={p.rot}
+              style={{
+                width: p.size,
+                height: p.leaf ? p.size * 0.6 : p.size,
+                background: p.color,
+                borderRadius: p.leaf ? "60% 0 60% 0" : "50%",
+              }}
+            />
+          )
+        )}
+      </div>
     </div>
   );
 }
