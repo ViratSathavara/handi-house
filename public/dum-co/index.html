@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dum & Co. — Biryani, slow-cooked</title>
+<meta name="description" content="Scroll through four kinds of dum biryani.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0b0805;--ink:#f6ead6;--gold:#e8b04b;--muted:#c9b896}
+*{box-sizing:border-box;margin:0}
+html{background:var(--bg)}
+body{background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.nav{position:fixed;inset:0 0 auto 0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:20px clamp(16px,4vw,48px);mix-blend-mode:difference}
+.nav b{font:600 22px Fraunces,serif;letter-spacing:.02em}
+.nav a{color:var(--ink);text-decoration:none;font-size:14px;margin-left:24px;opacity:.85}
+.bar{position:fixed;top:0;left:0;height:3px;width:100%;background:var(--gold);transform-origin:0 50%;transform:scaleX(0);z-index:30}
+.dots{position:fixed;right:clamp(10px,2vw,28px);top:50%;transform:translateY(-50%);z-index:20;display:flex;flex-direction:column;gap:12px}
+.dots i{width:8px;height:8px;border-radius:50%;background:var(--ink);opacity:.3;transition:.3s}
+.dots i.on{opacity:1;background:var(--gold);transform:scale(1.5)}
+.scene{position:relative;height:320vh}
+.stick{position:sticky;top:0;height:100vh;overflow:hidden}
+.stick video,.stick .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.12);transform-origin:0 0}
+.shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,8,5,.85) 0%,rgba(11,8,5,.25) 55%,rgba(11,8,5,0) 100%),linear-gradient(0deg,rgba(11,8,5,.7),rgba(11,8,5,0) 40%)}
+.copy{position:absolute;left:clamp(20px,6vw,96px);bottom:clamp(60px,14vh,140px);max-width:min(560px,86vw);will-change:transform,opacity}
+.copy.c{left:50%;top:50%;bottom:auto;transform:translate(-50%,-50%);text-align:center;max-width:min(800px,90vw)}
+.copy.c::before{content:'';position:absolute;inset:-18% -12%;z-index:-1;background:radial-gradient(closest-side,rgba(11,8,5,.78),rgba(11,8,5,0))}
+.copy{text-shadow:0 2px 24px rgba(0,0,0,.6)}
+.kick{font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+h1,h2{font-family:Fraunces,serif;font-weight:400;line-height:1.02;letter-spacing:-.01em}
+h1{font-size:clamp(52px,10vw,150px)}
+h2{font-size:clamp(38px,6vw,84px)}
+p{color:var(--muted);font-size:clamp(15px,1.4vw,19px);line-height:1.6;margin-top:18px}
+.tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px}
+.tags span{border:1px solid rgba(246,234,214,.35);padding:7px 14px;border-radius:99px;font-size:13px;backdrop-filter:blur(6px)}
+.hint{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted)}
+.hint::after{content:"";display:block;width:1px;height:34px;margin:10px auto 0;background:linear-gradient(var(--gold),transparent);animation:d 1.6s infinite}
+@keyframes d{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+.btn{display:inline-block;margin-top:28px;padding:16px 34px;border-radius:99px;background:var(--gold);color:#1b1206;font-weight:500;text-decoration:none}
+.foot{padding:40px;text-align:center;color:var(--muted);font-size:13px}
+@media (max-width:700px){.nav a{display:none}.dots{display:none}.shade{background:linear-gradient(0deg,rgba(11,8,5,.9),rgba(11,8,5,.1) 70%)}}
+@media (prefers-reduced-motion:reduce){.scene{height:100vh}}
+</style>
+</head>
+<body>
+<div class="bar" id="bar"></div>
+<nav class="nav"><b>Dum & Co.</b><div><a href="#hyderabadi">Hyderabadi</a><a href="#lucknowi">Lucknowi</a><a href="#kolkata">Kolkata</a><a href="#veg">Veg</a><a href="#order">Order</a></div></nav>
+<div class="dots" id="dots"></div>
+
+<section class="scene" id="hero" data-video="hero" data-center>
+  <div class="stick"><img class="poster" src="posters/hero.jpg" alt=""><video muted playsinline preload="auto" src="videos/hero.mp4"></video><div class="shade"></div>
+    <div class="copy c"><div class="kick">Sealed. Slow-cooked. Served.</div><h1>Dum & Co.</h1><p>Every pot is sealed with dough and left to breathe its own steam.</p></div>
+    <div class="hint">Scroll</div></div>
+</section>
+
+<section class="scene" id="hyderabadi" data-video="hyderabadi">
+  <div class="stick"><img class="poster" src="posters/hyderabadi.jpg" alt=""><video muted playsinline preload="auto" src="videos/hyderabadi.mp4"></video><div class="shade"></div>
+    <div class="copy"><div class="kick">01 — Hyderabad</div><h2>Hyderabadi<br>Dum Biryani</h2><p>Marinated chicken and long-grain basmati, layered raw and cooked together. Saffron, fried onions and mint finish every layer.</p><div class="tags"><span>Kacchi style</span><span>Saffron</span><span>Spicy</span></div></div></div>
+</section>
+
+<section class="scene" id="lucknowi" data-video="lucknowi">
+  <div class="stick"><img class="poster" src="posters/lucknowi.jpg" alt=""><video muted playsinline preload="auto" src="videos/lucknowi.mp4"></video><div class="shade"></div>
+    <div class="copy"><div class="kick">02 — Lucknow</div><h2>Awadhi<br>Biryani</h2><p>Gentle, fragrant and tender. Whole spices, kewra water and mutton cooked low until it falls off the bone.</p><div class="tags"><span>Kewra</span><span>Mutton</span><span>Mild</span></div></div></div>
+</section>
+
+<section class="scene" id="kolkata" data-video="kolkata">
+  <div class="stick"><img class="poster" src="posters/kolkata.jpg" alt=""><video muted playsinline preload="auto" src="videos/kolkata.mp4"></video><div class="shade"></div>
+    <div class="copy"><div class="kick">03 — Kolkata</div><h2>Kolkata<br>Biryani</h2><p>Soft, lightly spiced rice with a golden potato and a boiled egg. A knob of butter melts into every grain.</p><div class="tags"><span>Potato</span><span>Egg</span><span>Buttery</span></div></div></div>
+</section>
+
+<section class="scene" id="veg" data-video="veg">
+  <div class="stick"><img class="poster" src="posters/veg.jpg" alt=""><video muted playsinline preload="auto" src="videos/veg.mp4"></video><div class="shade"></div>
+    <div class="copy"><div class="kick">04 — Pure veg</div><h2>Paneer &<br>Garden Veg</h2><p>Paneer, peppers, peas and fresh mint folded into fragrant rice. Everything the meat versions have, minus the meat.</p><div class="tags"><span>Paneer</span><span>Mint</span><span>Vegetarian</span></div></div></div>
+</section>
+
+<section class="scene" id="spices" data-video="ingredients" data-center>
+  <div class="stick"><img class="poster" src="posters/ingredients.jpg" alt=""><video muted playsinline preload="auto" src="videos/ingredients.mp4"></video><div class="shade" style="opacity:.55"></div>
+    <div class="copy c"><div class="kick">The secret</div><h2>Cardamom. Clove.<br>Star anise. Saffron.</h2><p>Whole spices, ground fresh each morning.</p></div></div>
+</section>
+
+<section class="scene" id="order" data-video="serve" data-center>
+  <div class="stick"><img class="poster" src="posters/serve.jpg" alt=""><video muted playsinline preload="auto" src="videos/serve.mp4"></video><div class="shade" style="opacity:.6"></div>
+    <div class="copy c"><div class="kick">Ready when you are</div><h2>Pull up a chair.</h2><p>Biryani with raita, salan and a squeeze of lemon.</p><a class="btn" href="#order">Order now</a></div></div>
+</section>
+<div class="foot">© Dum & Co. — demo site</div>
+
+<script>
+(()=>{
+const scenes=[...document.querySelectorAll('.scene')];
+const bar=document.getElementById('bar'),dots=document.getElementById('dots');
+const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+scenes.forEach(()=>dots.appendChild(document.createElement('i')));
+const S=scenes.map(el=>({el,v:el.querySelector('video'),copy:el.querySelector('.copy'),poster:el.querySelector('.poster'),target:0,cur:0,ready:false}));
+S.forEach(s=>{
+  const ok=()=>{s.ready=true;s.v.pause()};
+  s.v.addEventListener('loadedmetadata',ok);
+  s.v.addEventListener('loadeddata',ok);
+  s.v.addEventListener('seeked',()=>{s.poster.style.opacity=0});
+  if(s.v.readyState>=1)ok();
+});
+function progress(el){const r=el.getBoundingClientRect(),h=el.offsetHeight-innerHeight;return Math.min(1,Math.max(0,-r.top/h))}
+const clamp=(x,a,b)=>Math.min(b,Math.max(a,x));
+function frame(){
+  const max=document.documentElement.scrollHeight-innerHeight;
+  bar.style.transform=`scaleX(${scrollY/max})`;
+  let active=0;
+  S.forEach((s,i)=>{
+    const r=s.el.getBoundingClientRect();
+    if(r.top<innerHeight*.5)active=i;
+    if(r.bottom<-200||r.top>innerHeight+200)return;
+    s.target=progress(s.el);
+    s.cur+=(s.target-s.cur)*(reduce?1:.14);
+    if(s.ready&&s.v.duration){
+      const t=s.cur*(s.v.duration-.05);
+      if(Math.abs(s.v.currentTime-t)>.01&&!s.v.seeking)s.v.currentTime=t;
+    }
+    // text: fade in 0-.18, hold, fade out .82-1
+    const p=s.cur,a=clamp(p/.18,0,1)*clamp((1-p)/.18,0,1);
+    const c=s.copy;
+    const base=c.classList.contains('c')?'translate(-50%,-50%) ':'';
+    c.style.opacity=s.el.id==='hero'?clamp(1-p/.25,0,1):a;
+    c.style.transform=base+`translateY(${(1-a)*40}px)`;
+  });
+  [...dots.children].forEach((d,i)=>d.classList.toggle('on',i===active));
+  requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{
+  const t=document.querySelector(a.getAttribute('href'));if(!t)return;e.preventDefault();
+  scrollTo({top:t.offsetTop+innerHeight*.35,behavior:'smooth'});
+}));
+})();
+</script>
+</body>
+</html>
